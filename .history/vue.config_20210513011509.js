@@ -9,8 +9,5 @@ module.exports = {
         "network": '@/network',
       }
     }
-  },
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/mall/'
-    : '/'
+  }
 }

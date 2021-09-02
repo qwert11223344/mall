@@ -11,6 +11,6 @@ module.exports = {
     }
   },
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/mall/'
+    ? '/项目名称/'
     : '/'
 }
