@@ -50,11 +50,10 @@ export default {
   display: flex;
   flex-direction: column;
   width: 48%;
+  padding-bottom: 2rem;
 }
 .good-list-item img{
   border-radius: .5rem;
-  width: 100%;
-  height: auto;
 }
 .goods-info{
   text-align: center;

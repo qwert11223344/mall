@@ -125,12 +125,12 @@ export default {
 		//监听goodsInfo中的图片加载
 		imgLoad() {
 			this.$refs.scroll.refresh();
-			const navoffsetHeight = this.$refs.nav.$el.offsetHeight;
+			// const navoffsetHeight = this.$refs.nav.$el.offsetHeight;
 	
 			this.themeTopYs.push(0);
-			this.$refs.params && this.themeTopYs.push(this.$refs.params.$el.offsetTop - navoffsetHeight);
-			this.$refs.comment && this.themeTopYs.push(this.$refs.comment.$el.offsetTop - navoffsetHeight);
-			this.$refs.recommend && this.themeTopYs.push(this.$refs.recommend.$el.offsetTop - navoffsetHeight);
+			this.$refs.params && this.themeTopYs.push(this.$refs.params.$el.offsetTop);
+			this.$refs.comment && this.themeTopYs.push(this.$refs.comment.$el.offsetTop);
+			this.$refs.recommend && this.themeTopYs.push(this.$refs.recommend.$el.offsetTop);
 			this.themeTopYs.push(Infinity)
 		},
 		// 监听navbar点击

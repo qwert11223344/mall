@@ -50,6 +50,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 48%;
+  height: 350px;
 }
 .good-list-item img{
   border-radius: .5rem;
