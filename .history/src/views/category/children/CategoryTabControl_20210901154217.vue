@@ -1,0 +1,22 @@
+<template>
+  <div class="cate-tab-control">
+    <span v-for="(item, index) in categories" :key="index" class="tab-item"></span>
+  </div>
+</template>
+
+<script>
+export default {
+  props:{
+    categories:{
+      type: Array,
+      default(){
+        return [];
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

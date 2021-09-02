@@ -1,0 +1,47 @@
+<template>
+  <div class="tab-bar-item" @click="itemClick">
+    <div v-if="!isActive" class="item-icon"><slot name="item-icon"></slot></div>
+    <div v-else class="item-active-icon"><slot name="item-icon-active"></slot></div>
+    <div class="item-text" :style="activeStyle"><slot name="item-text"></slot></div>
+  </div>
+</template>
+<script>
+export default {
+  props: {
+      path: {
+        type: String,
+        required: true
+      },
+      activeColor: {
+        type: String,
+        default: '#000000'
+      }
+    },
+    methods: {
+      itemClick() {
+        if(this.path != this.$route.path){
+          this.$router.replace(this.path)
+        }
+      }
+    },
+    computed: {
+      isActive() {
+        return this.$route.path.indexOf(this.path) !== -1
+      },
+      activeStyle() {
+        return this.isActive ? {color: this.activeColor} : {}
+      }
+    }
+}
+</script>
+
+<style scoped>
+  .tab-bar-item{
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

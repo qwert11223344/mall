@@ -1,0 +1,92 @@
+<template>
+	<scroll ref="scroll" class="wrapper" :data="[categoryData]">
+		<div class="category-content">
+			<span
+				class="content-item"
+				v-for="(item, index) in subcategories"
+				:key="index"
+			>
+				<img :src="item.image" alt="" srcset="" />
+				{{ item.title }}
+			</span>
+			<tab-control :titles="['流行', '新品', '销量']" @currentClick="currentClick" ref="tabControl"/>
+      <good-list :goods="showGoodsList"/>
+		</div>
+	</scroll>
+</template>
+
+<script>
+import Scroll from "components/common/scroll/Scroll.vue";
+import TabControl from 'components/content/tabcontrol/TabControl'
+import GoodList from 'components/content/goodlist/GoodList.vue';
+
+export default {
+	props: {
+		categoryData: {
+			type: Object,
+			default() {
+				return {};
+			}
+		}
+	},
+  data(){
+    return {
+      currentType: 'pop',
+    }
+  },
+	components: {
+		Scroll,
+    TabControl,
+    GoodList
+	},
+  computed:{
+    subcategories(){
+      return this.categoryData.subcategories;
+    },
+    showGoodsList(){
+      return this.categoryData.recommendData[this.currentType];
+    }
+  },
+  methods:{
+    currentClick(index) {
+			switch (index) {
+				case 0:
+					this.currentType = "pop";
+					break;
+				case 1:
+					this.currentType = "new";
+					break;
+				case 2:
+					this.currentType = "sell";
+					break;
+			}
+			this.$refs.tabControl.currentIndex = index;
+		},
+  }
+};
+</script>
+
+<style scoped>
+.category-content {
+	display: inline-flex;
+	/* justify-content: center; */
+	width: calc(100vw - 8rem);
+	flex-wrap: wrap;
+	font-size: 0.9rem;
+	padding: 0.5rem;
+}
+.content-item {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0.5rem 0.3rem;
+	width: 33%;
+}
+.content-item img {
+	width: 100%;
+	margin-bottom: 0.5rem;
+}
+.wrapper {
+	height: calc(100vh - 45px - 50px);
+}
+</style>

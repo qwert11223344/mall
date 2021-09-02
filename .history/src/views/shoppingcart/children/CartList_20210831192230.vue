@@ -1,0 +1,28 @@
+<template>
+  <div class="cart-list">
+    <cart-list-item v-for="(item, index) in cartList"
+                     :item="item"
+                     :key="index"/>
+  </div>
+</template>
+
+<script>
+  import CartListItem from "./CartListItem";
+export default {
+  props:{
+    cartList:{
+      type: Array,
+      default(){
+        return [];
+      }
+    }
+  },
+  components:{
+    CartListItem,
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
